@@ -10,26 +10,18 @@ int partition(int a[], int left, int right)
    for(int i = left + 1; i < right; ++i) {
       if(a[i] < pivot_value ) {
          ++j;
-         if(j != i) {
-            a[j] = a[i] + a[j];
-            a[i] = a[j] - a[i];
-            a[j] = a[j] - a[i];
-         }
+         std::swap(a[i], a[j]);
       }
    }
-   if(j != left) {
-      a[left] = a[j] + a[left];
-      a[j] = a[left] - a[j];
-      a[left] = a[left] - a[j];
-   }
+   std::swap(a[j], a[left]);
    return j;
 }
 
 void my_qsort(int array[], int left, int right)
 {
-   if(left < right) {
+   if(right - left > 1) {
       int pivot_idx = partition(array, left, right);
-      my_qsort(array, left, pivot_idx - 1);
+      my_qsort(array, left, pivot_idx);
       my_qsort(array, pivot_idx + 1, right);
    }
 }
@@ -38,7 +30,8 @@ int main()
 {
    std::vector<int> v;
    std::copy(std::istream_iterator<int>(std::cin), std::istream_iterator<int>(), std::back_inserter(v));
-   partition(&v[0], 0, v.size());
+   my_qsort(&v[0], 0, v.size());
    std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, " "));
+   std::cout << std::endl;
    return 0;
 }
