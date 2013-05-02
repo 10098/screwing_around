@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <ctime>
 
 int partition(int a[], int left, int right)
 {
@@ -26,12 +27,18 @@ void my_qsort(int array[], int left, int right)
    }
 }
 
-int main()
+int main(int argc, char **argv)
 {
    std::vector<int> v;
    std::copy(std::istream_iterator<int>(std::cin), std::istream_iterator<int>(), std::back_inserter(v));
+   clock_t c = clock();
    my_qsort(&v[0], 0, v.size());
-   std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, "\n"));
+   clock_t diff = clock() - c;
+   if(argc > 1) {
+      std::cout << static_cast<double>(diff)/CLOCKS_PER_SEC;
+   } else {
+      std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, "\n"));
+   }
    std::cout << std::endl;
    return 0;
 }

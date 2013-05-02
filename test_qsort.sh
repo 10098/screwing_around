@@ -1,11 +1,5 @@
-function rand_seq() {
-  for r in `seq 0 $1`
-  do
-     expr $RANDOM % 1000
-  done
-}
 
-RSEQ=`rand_seq 10`
+RSEQ=`./rseq $RAND%100`
 SORTED=`sort -n <<EOD
 $RSEQ
 EOD`
