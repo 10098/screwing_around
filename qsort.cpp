@@ -31,7 +31,7 @@ int main()
    std::vector<int> v;
    std::copy(std::istream_iterator<int>(std::cin), std::istream_iterator<int>(), std::back_inserter(v));
    my_qsort(&v[0], 0, v.size());
-   std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, " "));
+   std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, "\n"));
    std::cout << std::endl;
    return 0;
 }
