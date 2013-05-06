@@ -3,7 +3,7 @@ RSEQ=`./rseq $RAND%100`
 SORTED=`sort -n <<EOD
 $RSEQ
 EOD`
-OUTPUT=`./qsort <<EOD
+OUTPUT=`./$1 <<EOD
 $RSEQ
 EOD`
 if [ "$SORTED" == "$OUTPUT" ]
