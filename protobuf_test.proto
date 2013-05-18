@@ -1,0 +1,11 @@
+message TestMsg
+{
+	enum TestEnum{
+		VAL1=0;
+		VAL2=1;
+		VAL3=2;
+	}
+
+	required TestEnum enum_val = 1;
+	required int32 int_val = 2;
+}
